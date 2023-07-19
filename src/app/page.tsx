@@ -74,14 +74,10 @@ export default function Home() {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(
-      `hexcode: ${values.hexcode}, hsl: ${hexToHSL(`#${values.hexcode}`)}`
-    );
+    navigator.clipboard.writeText(hexToHSL(`#${values.hexcode}`));
   }
+
   return (
     <main className="dark grid place-items-center min-h-screen bg-background text-foreground">
       <Form {...form}>
